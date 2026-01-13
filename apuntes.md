@@ -103,3 +103,12 @@ Calculadora.sumar(2, 3)
 
 ---
 
+## 5. Tipos de Datos Básicos
+
+| Tipo    | Ejemplo                     | Notas                                                                 |
+|---------|-----------------------------|-----------------------------------------------------------------------|
+| Átomo   | `:error`, `:ok`, `:usuario` | Constante cuyo nombre es su valor (como símbolos en Ruby).            |
+| Tupla   | `{:ok, "msg"}`              | Colección ordenada en memoria contigua. Rápida para leer, lenta para modificar. |
+| Lista   | `[1, 2, 3]`                 | Lista enlazada. Rápida para agregar al inicio (prepend), lenta para acceso aleatorio. |
+| Mapa    | `%{nombre: "Juan", edad: 30}` | Colección clave-valor.                                                |
+| Binario | `<<1, 2, 3>>`               | Secuencia de bytes.                                                   |
