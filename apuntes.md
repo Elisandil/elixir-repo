@@ -46,3 +46,60 @@ Al instalar Elixir, obtienes tres comandos esenciales:
 * **`hex`:** El gestor de paquetes (repositorio de librerías).
 
 ---
+
+## 4. Conceptos Clave del Lenguaje
+
+### A. Inmutabilidad
+Los datos nunca cambian. Transformar un dato genera una copia nueva.
+
+```elixir
+list = [1, 2, 3]
+List.delete_at(list, 0) # Retorna [2, 3], pero `list` sigue siendo [1, 2, 3]
+``` 
+
+### B. El Operador Pipe (|>)
+Pasa el resultado de la expresión a la izquierda como el primer argumento de la función a la derecha.
+
+a) sin pipe:
+```elixir
+String.upcase(String.trim("  hola  "))
+```
+
+b) con pipe:
+```elixir
+"  hola  "
+|> String.trim()
+|> String.upcase()
+```
+
+### C. Pattern Matching (Coincidencia de Patrones)
+No es solo una asignación, es una aserción de estructura. El signo = es el operador de coincidencia.
+
+```elixir
+x = 1         # Asigna 1 a x
+1 = x         # Verifica si x es 1 (True)
+2 = x         # Error: MatchError
+
+# Desestructuración poderosa:
+{:ok, resultado} = {:ok, "Todo salió bien"}
+# Ahora `resultado` vale "Todo salió bien"
+```
+
+### D. Funciones Anónimas vs Módulos
+
+```elixir
+# Anónima
+suma = fn a, b -> a + b end
+suma.(2, 3) # Nota el punto para invocarla
+
+# Módulo (Nombrada)
+defmodule Calculadora do
+  def sumar(a, b) do
+    a + b
+  end
+end
+Calculadora.sumar(2, 3)
+```
+
+---
+
