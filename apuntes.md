@@ -15,3 +15,21 @@
 3.  **Tolerancia a Fallos:** Filosofía *"Let it crash"*. Si un proceso falla, un supervisor lo reinicia sin afectar al resto del sistema.
 
 ---
+
+## 2. Instalación
+
+### Herramientas Necesarias
+* **Erlang/OTP:** La base sobre la que corre Elixir.
+* **Elixir:** El lenguaje en sí.
+
+### Métodos por Sistema Operativo
+* **macOS:**
+    * `brew install elixir` (o vía `asdf`).
+* **Linux:**
+    * `sudo apt install elixir` (aunque se recomienda usar `asdf`).
+* **Windows:**
+    * Descargar el instalador web oficial o usar WSL2.
+
+> **Recomendación Pro:** Usar un gestor de versiones como **asdf** para manejar múltiples versiones de Erlang y Elixir fácilmente.
+
+---
