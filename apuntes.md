@@ -33,3 +33,16 @@
 > **Recomendación Pro:** Usar un gestor de versiones como **asdf** para manejar múltiples versiones de Erlang y Elixir fácilmente.
 
 ---
+
+## 3. Tooling (Herramientas de CLI)
+
+Al instalar Elixir, obtienes tres comandos esenciales:
+
+* **`iex` (Interactive Elixir):** La consola interactiva (REPL).
+    * Salir: `Ctrl+C` dos veces.
+* **`mix`:** La navaja suiza. Compila, crea proyectos y corre tests.
+    * `mix new nombre_proyecto`: Crea un proyecto nuevo.
+    * `mix test`: Corre las pruebas.
+* **`hex`:** El gestor de paquetes (repositorio de librerías).
+
+---
