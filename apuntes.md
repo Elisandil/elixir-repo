@@ -112,3 +112,49 @@ Calculadora.sumar(2, 3)
 | Lista   | `[1, 2, 3]`                 | Lista enlazada. Rápida para agregar al inicio (prepend), lenta para acceso aleatorio. |
 | Mapa    | `%{nombre: "Juan", edad: 30}` | Colección clave-valor.                                                |
 | Binario | `<<1, 2, 3>>`               | Secuencia de bytes.                                                   |
+
+---
+
+## 6. Estructuras de Control
+
+### A. `case` (Pattern Matching con Ramas)
+```elixir
+case {1, 2, 3} do
+  {4, 5, 6} -> "No coincide"
+  {1, x, 3} -> "Coincide, x vale #{x}"
+  _ -> "Catch-all (comodín)"
+end
+```
+
+### B. `cond` (Múltiples Condiciones)
+Evalúa condiciones hasta encontrar una verdadera:
+```elixir
+cond do
+  2 + 2 == 5 -> "Falso"
+  1 + 1 == 2 -> "Verdadero, se ejecuta esto"
+  true -> "Catch-all"
+end
+```
+
+### C. `if/else` y `unless`
+```elixir
+if true do
+  "Esto se ejecuta"
+else
+  "Esto no"
+end
+
+unless false do
+  "Se ejecuta porque la condición es falsa"
+end
+```
+
+### D. Guards (`when`)
+Añaden condiciones extra al pattern matching:
+```elixir
+defmodule Guardia do
+  def tipo(x) when is_integer(x), do: "Es entero"
+  def tipo(x) when is_binary(x), do: "Es string"
+  def tipo(_), do: "Otro tipo"
+end
+```
