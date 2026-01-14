@@ -191,3 +191,34 @@ for x <- [1, 2], y <- [:a, :b], do: {x, y}
 # [{1, :a}, {1, :b}, {2, :a}, {2, :b}]
 ```
 
+---
+
+## 8. Recursión
+
+### Ejemplo: Suma de Lista
+```elixir
+defmodule MiLista do
+  # Caso base
+  def suma([]), do: 0
+  
+  # Caso recursivo
+  def suma([head | tail]) do
+    head + suma(tail)
+  end
+end
+
+MiLista.suma([1, 2, 3, 4])  # 10
+```
+
+### Recursión de Cola (Tail Recursion)
+Más eficiente porque no acumula en el stack:
+```elixir
+defmodule MiLista do
+  def suma(lista), do: suma(lista, 0)
+  
+  defp suma([], acumulador), do: acumulador
+  defp suma([head | tail], acumulador) do
+    suma(tail, head + acumulador)
+  end
+end
+```
