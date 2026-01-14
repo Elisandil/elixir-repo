@@ -158,3 +158,36 @@ defmodule Guardia do
   def tipo(_), do: "Otro tipo"
 end
 ```
+
+---
+
+## 7. Listas y Enumerables
+
+### A. Head y Tail
+```elixir
+[head | tail] = [1, 2, 3]
+# head = 1
+# tail = [2, 3]
+
+# Agregar al inicio (muy eficiente)
+[0 | [1, 2, 3]]  # [0, 1, 2, 3]
+```
+
+### B. Módulo `Enum`
+```elixir
+Enum.map([1, 2, 3], fn x -> x * 2 end)      # [2, 4, 6]
+Enum.filter([1, 2, 3, 4], &rem(&1, 2) == 0) # [2, 4]
+Enum.reduce([1, 2, 3], 0, &(&1 + &2))       # 6
+```
+
+### C. Comprehensions
+Sintaxis elegante para transformar colecciones:
+```elixir
+for x <- [1, 2, 3], x > 1, do: x * 2
+# [4, 6]
+
+# Con múltiples generadores
+for x <- [1, 2], y <- [:a, :b], do: {x, y}
+# [{1, :a}, {1, :b}, {2, :a}, {2, :b}]
+```
+
