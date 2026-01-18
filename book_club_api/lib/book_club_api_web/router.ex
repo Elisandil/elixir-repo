@@ -7,6 +7,10 @@ defmodule BookClubApiWeb.Router do
 
   scope "/api", BookClubApiWeb do
     pipe_through :api
+
+    resources "/books", BookController, except: [:new, :edit]
+    resources "/members", MemberController, except: [:new, :edit]
+    resources "/reviews", ReviewController, except: [:new, :edit]
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
