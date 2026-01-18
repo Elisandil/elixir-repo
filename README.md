@@ -7,7 +7,7 @@ Repositorio de aprendizaje de **Elixir** — un lenguaje de programación funcio
 Este repositorio contiene:
 
 ### Apuntes Teóricos
-- [apuntes.md](apuntes.md) — Guía completa de fundamentos de Elixir incluyendo:
+  - [apuntes.md](apuntes.md) — Guía completa de fundamentos de Elixir incluyendo:
   - Historia y motivación del lenguaje
   - Instalación y herramientas (iex, mix, hex)
   - Inmutabilidad y el operador pipe (`|>`)
