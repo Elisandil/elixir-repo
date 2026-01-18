@@ -1,14 +1,11 @@
 import Config
 
 # Configure your database
-config :book_club_api, BookClubApi.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "book_club_api_dev",
-  stacktrace: true,
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+   config :book_club_api, BookClubApi.Repo,
+     database: Path.expand("../book_club_dev.db", Path.dirname(__ENV__.file)),
+     pool_size: 5,
+     stacktrace: true,
+     show_sensitive_data_on_connection_error: true
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
@@ -23,7 +20,7 @@ config :book_club_api, BookClubApiWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "/rdpH7DDrFwnSRh/MwQ/h2Gd/Nc7h0KW64mg13O2Mffw8ptzjSZr9jNLPWh11Iko",
+  secret_key_base: "JbC+mpu3tvKauXxR6onfTQ7xcw9QRoBz/CfmzUtjQ7HqYOee8qAEaSpdBhz6ppui",
   watchers: []
 
 # ## SSL Support

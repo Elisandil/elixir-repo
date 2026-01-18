@@ -20,7 +20,7 @@ config :book_club_api, BookClubApiWeb.Endpoint,
     layout: false
   ],
   pubsub_server: BookClubApi.PubSub,
-  live_view: [signing_salt: "AEET0UaH"]
+  live_view: [signing_salt: "NJcv4JqC"]
 
 # Configure the mailer
 #

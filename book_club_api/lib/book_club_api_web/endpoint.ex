@@ -7,7 +7,7 @@ defmodule BookClubApiWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_book_club_api_key",
-    signing_salt: "oSPxuy80",
+    signing_salt: "mitt+VN/",
     same_site: "Lax"
   ]
 

@@ -17,7 +17,7 @@ config :book_club_api, BookClubApi.Repo,
 # you can enable the server option below.
 config :book_club_api, BookClubApiWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "S7ntJlweZ5jxbepvZq3LRC0YbyxhbhqYoRqmZduWncbpm5CjQArB6Yh0w5dQATGK",
+  secret_key_base: "h6BcafsLPsqpo3Vk7Phrd7xV2hg7ym8lds9mFgrnEjTFKzC9GmRkpm/i0iMeEDPu",
   server: false
 
 # In test we don't send emails
