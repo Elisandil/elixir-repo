@@ -2,13 +2,17 @@ defmodule BookClubApi.Reviews.Review do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias BookClubApi.Books.Book
+  alias BookClubApi.Members.Member
+
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "reviews" do
     field :rating, :integer
     field :comment, :string
-    field :book_id, :binary_id
-    field :member_id, :binary_id
+
+    belongs_to :book, Book
+    belongs_to :member, Member
 
     timestamps(type: :utc_datetime)
   end
