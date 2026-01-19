@@ -5,7 +5,6 @@ defmodule BookClubApi.Reviews do
 
   import Ecto.Query, warn: false
   alias BookClubApi.Repo
-
   alias BookClubApi.Reviews.Review
 
   @doc """
@@ -18,7 +17,9 @@ defmodule BookClubApi.Reviews do
 
   """
   def list_reviews do
-    Repo.all(Review)
+    Review
+    |> Repo.all()
+    |> Repo.preload([:book, :member])
   end
 
   @doc """
@@ -35,7 +36,11 @@ defmodule BookClubApi.Reviews do
       ** (Ecto.NoResultsError)
 
   """
-  def get_review!(id), do: Repo.get!(Review, id)
+  def get_review!(id) do
+    Review
+    |> Repo.get!(id)
+    |> Repo.preload([:book, :member])
+  end
 
   @doc """
   Creates a review.
@@ -49,10 +54,14 @@ defmodule BookClubApi.Reviews do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_review(attrs) do
+  def create_review(attrs \\ %{}) do
     %Review{}
     |> Review.changeset(attrs)
     |> Repo.insert()
+    |> case do
+      {:ok, review} -> {:ok, Repo.preload(review, [:book, :member])}
+      error -> error
+    end
   end
 
   @doc """
@@ -71,6 +80,10 @@ defmodule BookClubApi.Reviews do
     review
     |> Review.changeset(attrs)
     |> Repo.update()
+    |> case do
+      {:ok, review} -> {:ok, Repo.preload(review, [:book, :member])}
+      error -> error
+    end
   end
 
   @doc """
