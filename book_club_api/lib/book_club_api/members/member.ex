@@ -10,6 +10,8 @@ defmodule BookClubApi.Members.Member do
     field :name, :string
     field :email, :string
     field :joined_at, :date
+    field :password_hash, :string
+    field :password, :string, virtual: true
 
     has_many :reviews, Review
 
@@ -27,6 +29,15 @@ defmodule BookClubApi.Members.Member do
     |> unique_constraint(:email)
   end
 
+  def registration_changeset(member, attrs) do
+    member
+    |> changeset(attrs)
+    |> cast(attrs, [:password])
+    |> validate_required([:password])
+    |> validate_length(:password, min: 8, max: 120)
+    |> hash_password()
+  end
+
   defp validate_email(changeset) do
     changeset
     |> validate_format(:email, ~r/^[\w._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/, message: "is not a valid email")
@@ -41,5 +52,15 @@ defmodule BookClubApi.Members.Member do
         []
       end
     end)
+  end
+
+  defp hash_password(changeset) do
+    case get_change(changeset, :password) do
+      nil ->
+        changeset
+
+      password ->
+        put_change(changeset, :password_hash, Pbkdf2.hash_pwd_salt(password))
+    end
   end
 end
