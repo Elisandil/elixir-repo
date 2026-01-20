@@ -1,46 +1,46 @@
 # BookClubApi
 
-REST API to manage a book club, built with **Phoenix Framework** and **Elixir**.
+API REST para gestionar un club de lectura, construida con **Phoenix Framework** y **Elixir**.
 
-## Quick Start
+## Inicio Rápido
 
 ```bash
-# Install dependencies
+# Instalar dependencias
 mix setup
 
-# Start server
+# Iniciar servidor
 mix phx.server
 
-# Or inside IEx
+# O dentro de IEx
 iex -S mix phx.server
 ```
 
-API will be available at [`localhost:4000`](http://localhost:4000).
+La API estará disponible en [`localhost:4000`](http://localhost:4000).
 
 ---
 
-## Available Endpoints
+## Endpoints Disponibles
 
-| Resource | Endpoint | Methods |
-|----------|----------|---------|
-| Books | `/api/books` | GET, POST, GET/:id, PUT/:id, DELETE/:id |
-| Members | `/api/members` | GET, POST, GET/:id, PUT/:id, DELETE/:id |
+| Recurso | Endpoint | Métodos |
+|---------|----------|---------|
+| Libros | `/api/books` | GET, POST, GET/:id, PUT/:id, DELETE/:id |
+| Miembros | `/api/members` | GET, POST, GET/:id, PUT/:id, DELETE/:id |
 | Reviews | `/api/reviews` | GET, POST, GET/:id, PUT/:id, DELETE/:id |
 
 ---
 
-## Version History
+## Historial de Versiones
 
-### v0.0 - Initial Project
-> *Date: January 2026*
+### v0.0 - Proyecto Inicial
+> *Fecha: Enero 2026*
 
-**Changes:**
-- Phoenix project created with `--no-html --no-assets --database sqlite3`
-- Generated resources: Books, Members, Reviews
-- Basic CRUD working for all three models
-- SQLite database configured
+**Cambios:**
+- Proyecto Phoenix creado con `--no-html --no-assets --database sqlite3`
+- Recursos generados: Libros, Miembros, Reseñas
+- CRUD básico funcionando para los tres modelos
+- Base de datos SQLite configurada
 
-**Commands used:**
+**Comandos utilizados:**
 ```bash
 mix phx.new book_club_api --no-html --no-assets --database sqlite3
 mix phx.gen.json Books Book books title:string author:string isbn:string description:text published_year:integer
@@ -50,33 +50,33 @@ mix phx.gen.json Reviews Review reviews rating:integer comment:text book_id:refe
 
 ---
 
-### v0.1 - Validations
-> *Date: January 2026*
+### v0.1 - Validaciones
+> *Fecha: Enero 2026*
 
-**Changes:**
-- Added robust validations to all schemas
-- Created unique indexes in the database
-- Custom validations for ISBN, email and rating
+**Cambios:**
+- Añadidas validaciones robustas a todos los esquemas
+- Creados índices únicos en la base de datos
+- Validaciones personalizadas para ISBN, email y puntuación
 
-**Validations by model:**
+**Validaciones por modelo:**
 
-| Model | Validations |
-|-------|-------------|
-| **Book** | title/author required, ISBN format 10/13 digits, unique ISBN, year between 1450-current |
-| **Member** | name/email required, valid email format, unique email, date not in future |
-| **Review** | rating 1-5 stars, book_id/member_id required, one review per book/member |
+| Modelo | Validaciones |
+|--------|--------------|
+| **Book** | título/autor requeridos, formato ISBN 10/13 dígitos, ISBN único, año entre 1450-actual |
+| **Member** | nombre/email requeridos, formato de email válido, email único, fecha no futura |
+| **Review** | puntuación 0-10, book_id/member_id requeridos, una reseña por libro/miembro |
 
 ---
 
-### v0.2 - Model Relationships
-> *Date: January 2026*
+### v0.2 - Relaciones entre Modelos
+> *Fecha: Enero 2026*
 
-**Changes:**
-- Configured relationships between `Book`, `Member` and `Review`
-- `Review` now includes book and member data in JSON responses
-- Added `preload` in Reviews context
+**Cambios:**
+- Configuradas las relaciones entre `Book`, `Member` y `Review`
+- `Review` ahora incluye datos del libro y miembro en las respuestas JSON
+- Añadido `preload` en el contexto de Reviews
 
-**Relationships:**
+**Relaciones:**
 ```
 ┌──────────┐       1:N       ┌──────────┐       N:1       ┌──────────┐
 │   Book   │────────────────►│  Review  │◄────────────────│  Member  │
@@ -90,47 +90,47 @@ mix phx.gen.json Reviews Review reviews rating:integer comment:text book_id:refe
 - `Member` → `has_many :reviews`
 - `Review` → `belongs_to :book` + `belongs_to :member`
 
-**Response example:**
+**Ejemplo de respuesta:**
 ```json
 {
   "data": {
     "id": "uuid",
     "rating": 5,
-    "comment": "Excellent book!",
+    "comment": "¡Excelente libro!",
     "book": { "id": "uuid", "title": "1984", "author": "George Orwell" },
-    "member": { "id": "uuid", "name": "John Smith" }
+    "member": { "id": "uuid", "name": "Juan García" }
   }
 }
 ```
 
 ---
 
-## Roadmap
+## Hoja de Ruta
 
-- [x] **v0.0** - Initial project with basic CRUD
-- [x] **v0.1** - Validations
-- [x] **v0.2** - Model relationships
-- [ ] **v0.3** - Authentication (JWT)
-- [ ] **v0.4** - Filters and search
-- [ ] **v0.5** - Pagination
-- [ ] **v0.6** - Complete tests
-- [ ] **v1.0** - Production ready
+- [x] **v0.0** - Proyecto inicial con CRUD básico
+- [x] **v0.1** - Validaciones
+- [x] **v0.2** - Relaciones entre modelos
+- [ ] **v0.3** - Autenticación (JWT)
+- [ ] **v0.4** - Filtros y búsqueda
+- [ ] **v0.5** - Paginación
+- [ ] **v0.6** - Tests completos
+- [ ] **v1.0** - Listo para producción
 
 ---
 
-## Tech Stack
+## Stack Tecnológico
 
 - **Elixir** 1.14+
 - **Phoenix Framework** 1.7+
 - **Ecto** (ORM)
-- **SQLite3** (Database)
+- **SQLite3** (Base de datos)
 
 ---
 
-## Resources
+## Recursos
 
 - [Phoenix Framework](https://www.phoenixframework.org/)
-- [Phoenix Guides](https://hexdocs.pm/phoenix/overview.html)
-- [Documentation](https://hexdocs.pm/phoenix)
-- [Elixir Forum](https://elixirforum.com/c/phoenix-forum)
-- [Original project: ElixirLand Book Club API](https://github.com/elixirland/xlp-book-club-API)
+- [Guías de Phoenix](https://hexdocs.pm/phoenix/overview.html)
+- [Documentación](https://hexdocs.pm/phoenix)
+- [Foro de Elixir](https://elixirforum.com/c/phoenix-forum)
+- [Proyecto original: ElixirLand Book Club API](https://github.com/elixirland/xlp-book-club-API)
