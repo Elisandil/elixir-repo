@@ -42,3 +42,12 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
+
+# Guardian configuration
+config :book_club_api, BookClubApi.Guardian,
+  issuer: "book_club_api",
+  secret_key: "clave_secreta_cambiar_en_produccion_abc123xyz789"
+
+# Import environment specific config. This must remain at the bottom
+# of this file so it overrides the configuration defined above.
+import_config "#{config_env()}.exs"
