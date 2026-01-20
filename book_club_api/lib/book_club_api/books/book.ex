@@ -37,7 +37,7 @@ defmodule BookClubApi.Books.Book do
   end
 
   defp validate_published_year(changeset) do
-    current_year = Date.utc.today().year
+    current_year = Date.utc_today().year
 
     changeset
     |> validate_number(:published_year, greater_than_or_equal_to: 1900, less_than_or_equal_to: current_year,
